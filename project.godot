@@ -24,6 +24,10 @@ config/name="Projection-playground"
 run/main_scene="res://main.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+settings/stdout/print_fps=true
+
 [input]
 
 click={
