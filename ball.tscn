@@ -9,9 +9,12 @@ bounce = 1.0
 [sub_resource type="CircleShape2D" id=1]
 
 [node name="Ball" type="RigidBody2D"]
+mass = 0.5
 physics_material_override = SubResource( 2 )
 sleeping = true
 can_sleep = false
+linear_damp = 0.0
+angular_damp = 0.0
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

@@ -44,5 +44,4 @@ __meta__ = {
 }
 
 [node name="ProjectionByFormula" type="Line2D" parent="."]
-width = 1.0
 default_color = Color( 0.921569, 0.74902, 0.0705882, 1 )

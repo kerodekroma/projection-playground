@@ -1,8 +1,8 @@
 extends Node2D
 
 const Ball = preload("res://ball.tscn")
-const max_points = 500
-const initial_ball_position = Vector2(100, 100)
+const max_points = 100
+const initial_ball_position = Vector2(100, 200)
 
 onready var line_by_formula = $ProjectionByFormula
 
@@ -10,7 +10,7 @@ var ball_instance: Ball
 var is_ball_outside = false
 var steps = []
 var line = Line2D.new()
-const impulse = Vector2(100, 0)
+const impulse = Vector2(200, -120)
 
 func _ready():
 	create_ball()
@@ -26,7 +26,7 @@ func _process(_delta):
 			remove_child(node)
 
 func _physics_process(delta):
-	print("_physics_process:delta", delta)
+	#print("_physics_process:delta", delta)
 	line.add_point(ball_instance.position)
 	render_projection_v2(delta)
 
@@ -41,7 +41,7 @@ func create_ball():
 	if line.points.size() > 1:
 		line.clear_points()
 	
-	line.width = 1
+	line.width = 10
 	line.default_color = Color.red
 
 func render_projection_v1():
@@ -63,8 +63,6 @@ func render_projection_v2(delta):
 
 	line_by_formula.clear_points()
 	var pos = initial_ball_position
-	var radius = 10 * 2
-
 	var _gravity = Vector2(0, 1)
 	var _inv_mass = 1.0 / 1 # ball mass
 	var _force = _gravity + impulse
@@ -72,5 +70,5 @@ func render_projection_v2(delta):
 
 	for i in max_points:
 		line_by_formula.add_point(pos)
-		vel += _gravity * 2 * delta
+		vel += _gravity * (0.01 + delta)
 		pos += vel
